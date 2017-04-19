@@ -7,17 +7,17 @@
   		<dependency>
                  <groupId>org.apache.poi</groupId>
                  <artifactId>poi</artifactId>
-                 <version>3.15</version>
+                 <version>3.16</version>
           </dependency>
           <dependency>
                  <groupId>org.apache.poi</groupId>
                  <artifactId>poi-ooxml</artifactId>
-                 <version>3.15</version>
+                 <version>3.16</version>
           </dependency>
           <dependency>
                  <groupId>org.apache.poi</groupId>
                  <artifactId>poi-ooxml-schemas</artifactId>
-                 <version>3.15</version>
+                 <version>3.16</version>
           </dependency>
           <!-- https://mvnrepository.com/artifact/dom4j/dom4j -->
 		<dependency>
@@ -38,7 +38,21 @@
                  <artifactId>openxml4j</artifactId>
                  <version>1.0-beta</version>
           </dependency>
+<!-- https://mvnrepository.com/artifact/com.aspose/aspose-cells -->
+<dependency>
+    <groupId>com.aspose</groupId>
+    <artifactId>aspose-cells</artifactId>
+    <version>16.11.0</version>
+</dependency>
+
   </dependencies>
+  <repositories>
+   <repository>
+       <id>AsposeJavaAPI</id>
+       <name>Aspose Java API</name>
+       <url>http://maven.aspose.com/artifactory/simple/ext-release-local/</url>
+   </repository>
+</repositories>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>

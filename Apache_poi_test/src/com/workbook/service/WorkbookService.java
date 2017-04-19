@@ -29,5 +29,7 @@ public interface WorkbookService {
 	void formatSheet(String workbookname, String sheetname, Map<Object, Object[]> data);
 	
 	void readColumn(String workbookname, String sheetname,int colIndexToRead);
+	
+	 void sortSheet(String workbookname, String sheetname, int column, int rowStart);
 
 }

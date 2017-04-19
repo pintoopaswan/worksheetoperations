@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -507,5 +508,52 @@ public class WorkbookServiceImpl implements WorkbookService {
 			System.out.println("Exception Occured:"+e.getMessage());
 		}
 	}
+	
+@Override
+ public void sortSheet(String workbookname,String sheet1, int column, int rowStart) {
+	 boolean sorting = true;
+	 try{
+		FileInputStream fis = new FileInputStream(new File(workbookname));
+		HSSFWorkbook workbook = new HSSFWorkbook(fis);
+		HSSFSheet sheet=workbook.getSheet(sheet1);
+	    int lastRow = sheet.getLastRowNum();
+	    while (sorting == true) {
+	        sorting = false;
+	        for (Row row : sheet) {
+	            // skip if this row is before first to sort
+	            if (row.getRowNum()<rowStart) continue;
+	            // end if this is last row
+	            if (lastRow==row.getRowNum()) break;
+	            Row row2 = sheet.getRow(row.getRowNum()+1);
+	            if (row2 == null) continue;
+	            System.out.println(row.getCell(column));
+	            System.out.println(row2.getCell(column));
+	            String firstValue = (row.getCell(column) != null) ? row.getCell(column).getStringCellValue() : "";
+	            String secondValue = (row2.getCell(column) != null) ? row2.getCell(column).getStringCellValue() : "";
+	            //compare cell from current row and next row - and switch if secondValue should be before first
+	            if (secondValue.compareToIgnoreCase(firstValue)<0) {                          
+	                sheet.shiftRows(row2.getRowNum(), row2.getRowNum(), -1);
+	                sheet.shiftRows(row.getRowNum(), row.getRowNum(), 1);
+	                sorting = true;
+	            }
+	        }
+	    }
+	    System.out.println("sorting done");
+	 }catch(Exception e){
+		 System.out.println("Exception Occured:"+e.getMessage());
+	 }
+	}
 
+public void utilSheet(String workbookname,String sheet1) {
+	 try{
+		FileInputStream fis = new FileInputStream(new File(workbookname));
+		XSSFWorkbook workbook = new XSSFWorkbook(fis);
+		XSSFSheet sheet=workbook.getSheet(sheet1);
+	    int lastRow = sheet.getLastRowNum();
+	    System.out.println("rows:"+lastRow);
+	    
+	 }catch(Exception e){
+		 System.out.println("Exception Occured:"+e.getMessage());
+	 }
+}
 }

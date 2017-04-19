@@ -3,9 +3,6 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.TreeMap;
 
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
 import com.workbook.serviceImpl.WorkbookServiceImpl;
 public class TestWorkbook {
 	
@@ -19,6 +16,7 @@ public class TestWorkbook {
 		details.put("2",new Object[]{"Pintoo",60,50,80,60});
 		details.put("3",new Object[]{"Ram",40,80,85,75});
 		details.put("4",new Object[]{"Nilima",70,60,95,85});
+		details.put("5",new Object[]{"Raja",70,60,95,85});
 		
 		Map<Object,Object[]> semester=new TreeMap<Object,Object[]>();
 		semester.put("1",new Object[]{"Marks Details"});
@@ -32,7 +30,7 @@ public class TestWorkbook {
 		
 		//XSSFWorkbook workbook=WorkbookServiceImpl.createWorkbook("");
 		//WorkbookServiceImpl.createSheet("Student", "aaa");
-		//WorkbookServiceImpl.writeSheet("Student","marksheet",details);
+		//WorkbookServiceImpl.writeSheet("pintoo","marksheet",details);
 		//WorkbookServiceImpl.useFormula( "Student","marksheet");
 		//WorkbookServiceImpl.readSheet("Student");
 		//WorkbookServiceImpl.renameSheet("Student", "Sheet2", "Pintoo1");
@@ -40,7 +38,9 @@ public class TestWorkbook {
 		//WorkbookServiceImpl.writeInChart("chart","Sheet1",details);
 		//WorkbookServiceImpl.protctedWorkbook("voters");
 		//WorkbookServiceImpl.formatSheet("college","marksheet",semester);
-		WorkbookServiceImpl.readColumn("Student", "marksheet", 0);
+		//WorkbookServiceImpl.readColumn("Student", "marksheet", 0);
+		WorkbookServiceImpl.sortSheet("voters.xls", "Voters", 1,1);
+		//WorkbookServiceImpl.utilSheet("Student.xlsx", "marksheet");
 		 
 	}
 
